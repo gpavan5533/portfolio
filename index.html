@@ -11,7 +11,6 @@
   <script src="https://kit.fontawesome.com/a2e0b1d9c2.js" crossorigin="anonymous"></script>
 
   <style>
-    /* ░░ Base ░░ */
     :root {
       --bg: #0f0f0f;
       --surface: #1a1a1a;
@@ -25,29 +24,33 @@
       background: var(--bg);
       color: var(--text);
       font-family: 'Inter', sans-serif;
-      line-height: 1.6;
       scroll-behavior: smooth;
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { color: var(--highlight); }
 
-    /* ░░ Header ░░ */
+    /* Header */
     header {
       position: relative;
       height: 60vh;
       background: linear-gradient(135deg, #111, #222 60%);
       clip-path: polygon(0 0,100% 0,100% 80%,0 100%);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      overflow: hidden;
     }
     header::before {
       content: '';
-      position: absolute; inset: 0;
-      background: url('profile.png') center/cover no-repeat;
+      position: absolute;
+      inset: 0;
+      background: url('profile.jpg') center/cover no-repeat;
       filter: blur(8px) brightness(0.3);
     }
     header > div {
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
     header h1 {
       font-size: 3rem;
@@ -61,7 +64,24 @@
       color: var(--text);
     }
 
-    /* ░░ Main Content ░░ */
+    /* Profile image */
+    .profile-img {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      object-fit: cover;
+      z-index: 2;
+      transition: transform var(--transition);
+    }
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Main content */
     main { max-width: 900px; margin: -80px auto 2rem; padding: 0 1rem; }
 
     .section {
@@ -82,7 +102,7 @@
       display: inline-block;
     }
 
-    /* ░░ Skills Grid ░░ */
+    /* Skills grid */
     .skills {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
@@ -124,7 +144,7 @@
     }
     @keyframes fill { to { width: var(--w); } }
 
-    /* ░░ Tools Showcase ░░ */
+    /* Tools showcase */
     .tools {
       display: flex; flex-wrap: wrap; gap: 1rem;
       justify-content: center;
@@ -141,7 +161,7 @@
     .tool p { margin-top: 0.5rem; font-size: 0.9rem; }
     .tool:hover { border-color: var(--accent); }
 
-    /* ░░ Footer ░░ */
+    /* Footer */
     footer {
       text-align: center;
       padding: 2rem 0;
@@ -153,6 +173,7 @@
 
 <body>
   <header>
+    <img src="profile.jpg" alt="Pavan’s Photo" class="profile-img" />
     <div>
       <h1>Pavan</h1>
       <p>DevOps Engineer • Linux • AWS • CI/CD • Kubernetes</p>
@@ -170,7 +191,7 @@
       </p>
     </section>
 
-    <!-- Skill Set -->
+    <!-- Core Skills -->
     <section class="section" id="skills">
       <h2>Core Skills</h2>
       <div class="skills">
@@ -207,7 +228,7 @@
       </div>
     </section>
 
-    <!-- Tools & Tech -->
+    <!-- Tools & Technologies -->
     <section class="section" id="tools">
       <h2>Tools & Technologies</h2>
       <div class="tools">
