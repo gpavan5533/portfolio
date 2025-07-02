@@ -1,15 +1,30 @@
-# DevOps Portfolio
+name: Deploy to GitHub Pages
 
-This repository hosts my personal DevOps portfolio, showcasing:
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - index.html
+      - README.md
 
-- Linux server management
-- AWS infrastructure & services
-- CI/CD pipelines with GitLab & Docker
-- Automated build processes
+permissions:
+  pages: write
+  id-token: write
+  contents: read
 
-## Deployment
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
 
-GitHub Actions will automatically deploy `index.html` to GitHub Pages on every push to `main`.
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-**Site URL:**  
-`https://<your-username>.github.io/portfolio/`
+      - name: Upload site contents
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
