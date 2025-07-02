@@ -82,7 +82,7 @@
     }
 
     /* Main content */
-    main { max-width: 900px; margin: -80px auto 2rem; padding: 0 1rem; }
+    main { max-width: 900px; margin: -80px auto 2rem; padding: 0 1rem; position: relative; z-index: 1;}
 
     .section {
       margin-bottom: 3rem;
@@ -91,6 +91,9 @@
       padding: 2rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.6);
       transition: transform var(--transition);
+      position: relative;   /* establish stacking context */
+      z-index: 2;           /* put it above header */
+
     }
     .section:hover { transform: translateY(-4px); }
     .section h2 {
