@@ -1,71 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pavan – DevOps Portfolio</title>
+  <title>Pavan’s DevOps Portfolio</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a2e0b1d9c2.js" crossorigin="anonymous"></script>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 2rem; line-height: 1.6; }
-    h1, h2 { color: #2c3e50; }
-    section { margin-bottom: 2rem; }
-    ul { margin-left: 1.2rem; }
-    footer { text-align: center; margin-top: 3rem; font-size: 0.9rem; }
+    :root {
+      --primary: #4e89ae;
+      --accent: #f2d492;
+      --bg: #f7f7f7;
+      --text: #333;
+      --light: #fff;
+      --transition: 0.4s ease;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    header {
+      background: var(--primary);
+      color: var(--light);
+      padding: 4rem 2rem;
+      text-align: center;
+      clip-path: polygon(0 0,100% 0,100% 80%,0 100%);
+      position: relative;
+    }
+    header::after {
+      content: '';
+      background: url('profile.jpg') no-repeat center/cover;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      border: 5px solid var(--light);
+      position: absolute; bottom: -80px; left: calc(50% - 80px);
+    }
+    header h1 { font-size: 2.8rem; margin-bottom: 0.5rem; }
+    header p { font-size: 1.2rem; opacity: 0.9; }
+
+    main { padding: 6rem 2rem 2rem; max-width: 900px; margin: auto; }
+
+    .section { margin-bottom: 3rem; }
+    .section h2 {
+      font-size: 1.8rem; margin-bottom: 1rem;
+      border-bottom: 3px solid var(--accent); display: inline-block;
+    }
+
+    /* Skills Grid */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: 1.5rem;
+    }
+    .skill-card {
+      background: var(--light);
+      padding: 1.5rem; border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+    }
+    .skill-card i {
+      font-size: 2rem; color: var(--primary); margin-bottom: 0.6rem;
+    }
+    .skill-card h3 {
+      font-size: 1.1rem; margin-bottom: 0.8rem;
+    }
+
+    /* Progress bars */
+    .progress {
+      background: #e4e4e4; border-radius: 20px; overflow: hidden;
+      height: 12px; margin-top: 0.5rem;
+    }
+    .progress div {
+      height: 100%; width: 0;
+      background: var(--accent);
+      animation: fillBar 1.4s forwards;
+    }
+    @keyframes fillBar {
+      to { width: var(--width); }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center; padding: 2rem 0; font-size: 0.9rem;
+      color: #777;
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Pavan’s DevOps Portfolio</h1>
-    <p>Seasoned DevOps Engineer with deep expertise in Linux, AWS, CI/CD & build automation.</p>
+    <h1>Pavan</h1>
+    <p>DevOps Engineer | Linux · AWS · CI/CD · Docker</p>
   </header>
 
-  <section id="linux-server">
-    <h2>Linux Server Management</h2>
-    <p>Design, harden, and maintain enterprise Linux environments:</p>
-    <ul>
-      <li>Automated OS patching and package updates via Ansible playbooks.</li>
-      <li>Implemented system monitoring with Prometheus & Alertmanager.</li>
-      <li>Hardened SSH access and enforced role‐based sudo policies.</li>
-      <li>Performance tuning (sysctl, file descriptors) for high‐throughput services.</li>
-    </ul>
-  </section>
+  <main>
+    <!-- About -->
+    <section class="section" id="about">
+      <h2>About Me</h2>
+      <p>
+        I’m a passionate DevOps engineer crafting reliable infrastructure, automated pipelines,
+        and scalable cloud solutions. Experienced in Linux server hardening, AWS architecture,
+        and end-to-end CI/CD with containerization.
+      </p>
+    </section>
 
-  <section id="aws-services">
-    <h2>AWS Services Management</h2>
-    <p>Architect and optimize cloud infrastructure across core AWS services:</p>
-    <ul>
-      <li>Built VPCs with public/private subnets, NAT gateways, and route tables.</li>
-      <li>Managed EC2 fleets using Auto Scaling Groups & Launch Templates.</li>
-      <li>Defined IAM roles/policies and enforced least‐privilege access.</li>
-      <li>Containerized workloads on ECS & EKS (Fargate), integrated with ALB.</li>
-      <li>Cost optimization via Reserved Instances, Savings Plans, and Rightsizing.</li>
-    </ul>
-  </section>
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <h2>Skill Set</h2>
+      <div class="skills">
+        <div class="skill-card">
+          <i class="fas fa-server"></i>
+          <h3>Linux Server Management</h3>
+          <div class="progress" style="--width: 90%;"><div></div></div>
+          <small>Automation, Hardening, Monitoring</small>
+        </div>
 
-  <section id="gitlab-cicd">
-    <h2>CI/CD with GitLab & Docker</h2>
-    <p>End-to-end pipelines for testing, building, and deploying containerized apps:</p>
-    <ul>
-      <li>Created multi-stage Dockerfiles to minimize image size and speed up builds.</li>
-      <li>Designed `.gitlab-ci.yml` with stages for linting, unit tests, image build, and deploy.</li>
-      <li>Integrated security scanning (Snyk) and vulnerability gates into the pipeline.</li>
-      <li>Automated deployments to dev, staging, and prod with blue/green strategies.</li>
-      <li>Self-hosted GitLab Runner on Kubernetes for scalable parallel jobs.</li>
-    </ul>
-  </section>
+        <div class="skill-card">
+          <i class="fab fa-aws"></i>
+          <h3>AWS Cloud</h3>
+          <div class="progress" style="--width: 85%;"><div></div></div>
+          <small>VPC, EC2, IAM, ECS/EKS, Cost-optimization</small>
+        </div>
 
-  <section id="build-automation">
-    <h2>Build Automation</h2>
-    <p>Seamless, trigger-based builds driving rapid feature rollout:</p>
-    <ul>
-      <li>Kick off builds automatically on every merge or tag push.</li>
-      <li>Leveraged Docker & GitLab cache for sub-minute build times.</li>
-      <li>Published build artifacts (binaries, static assets) to AWS S3 & GitLab Releases.</li>
-      <li>Documented build processes and versioning conventions for team adoption.</li>
-    </ul>
-  </section>
+        <div class="skill-card">
+          <i class="fab fa-gitlab"></i>
+          <h3>GitLab CI/CD</h3>
+          <div class="progress" style="--width: 88%;"><div></div></div>
+          <small>Pipeline as Code, Security Scans, Runners</small>
+        </div>
+
+        <div class="skill-card">
+          <i class="fab fa-docker"></i>
+          <h3>Docker & Containers</h3>
+          <div class="progress" style="--width: 92%;"><div></div></div>
+          <small>Multi-stage Builds, Registry, Orchestration</small>
+        </div>
+
+        <div class="skill-card">
+          <i class="fas fa-tools"></i>
+          <h3>Build Automation</h3>
+          <div class="progress" style="--width: 80%;"><div></div></div>
+          <small>Artifact Publishing, Caching, Versioning</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Highlights -->
+    <section class="section" id="experience">
+      <h2>Experience Highlights</h2>
+      <ul>
+        <li>Automated nightly OS patching across 200+ Linux servers using Ansible.</li>
+        <li>Designed AWS infrastructure for microservices with multi-AZ resilience.</li>
+        <li>Built GitLab pipelines handling lint/tests/build/deploy in parallel stages.</li>
+        <li>Implemented blue/green and canary deploys to reduce downtime.</li>
+      </ul>
+    </section>
+  </main>
 
   <footer>
-    <p>🔗 <a href="https://github.com/<your-username>">github.com/&#8203;<your-username></a></p>
+    <p>Find me on GitHub: <a href="https://github.com/<your-username>">/<your-username></a></p>
   </footer>
+
+  <!-- Animate bars when section scrolls into view -->
+  <script>
+    const skillsSection = document.querySelector('#skills');
+    const bars = document.querySelectorAll('.progress div');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          bars.forEach(bar => {
+            const w = getComputedStyle(bar.parentElement).getPropertyValue('--width');
+            bar.style.width = w;
+          });
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(skillsSection);
+  </script>
 </body>
 </html>
